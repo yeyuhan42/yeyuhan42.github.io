@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<title>进度条</title>
+	<meta charset="utf-8">
+	<title>canvas旋转</title>
 	<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
 		html,body{
 			background: #000;
 		}
-		#c1{
+		canvas{
 			background: #fff;
 			margin: 100px;
 		}
 	</style>
-	<script>
+
+	<script type="text/javascript">
 		function d2a(n){
 			return n*Math.PI/180;
 		}
 		window.onload=function(){
 			var oC=document.getElementById('c1');
-			oC.width="800";
-			oC.height="500";
-			var cx=400;
-			var cy=200;
-			var r=150;
-
-			//圆
 			var gd=oC.getContext('2d');
+			var x=300,y=200,w=300,h=100,d=0;
 
-			gd.lineWidth="20";
-
-			var str="0%";
-			var h=60;
-			gd.fillStyle="#f00";
-			gd.font=h+"px songti";
-
-			var d=0;
-			var timer=setInterval(function(){
+			setInterval(function(){
 				gd.clearRect(0,0,oC.width,oC.height);
-				gd.beginPath();
-				gd.strokeStyle="rgb("+parseInt(d/360*255)+",0,0)";
-				gd.arc(cx,cy,r,d2a(0),d2a(d++),false);
-				gd.stroke();
 
-				//文字
-				str=Math.floor(d/360*100)+'%';
-				var w=gd.measureText(str).width;
-				gd.fillText(str,cx-w/2,cy+h/2);
+				//目标
+				gd.strokeRect(x,y,w,h);
+				gd.save();
+				drawRect(x,y,w,h,d++);
+				gd.restore();
+			},30);	
 
-				if(d>360){
-					clearInterval(timer);
-				}
-			},30);
+			function drawRect(x,y,w,h,rotate){
+				//平移画布到物体中心点
+				gd.translate(x+w/2,y+h/2);
 
+				//旋转,旋转中心为画布(0,0)点
+				gd.rotate(d2a(rotate));
 
+				//把自己画的物体的中心放在画布中心点
+				gd.strokeRect(-w/2,-h/2,w,h);
+			}
+
+			gd.fillStyle="rgba(0,0,0,0.1)";
+			gd.fillRect(0,0,oC.width,oC.height);
 		};
 	</script>
 </head>
 <body>
-	<canvas id="c1"></canvas>
+	<canvas id="c1" width="800" height="500"></canvas>
 </body>
 </html>
