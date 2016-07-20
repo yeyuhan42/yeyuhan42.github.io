@@ -4,6 +4,10 @@
 	<meta charset="utf-8" />
 	<title>专属周思琪的明信片</title>
 	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
 		html,body{
 			font-family: "微软雅黑";
 			background: #000;
@@ -14,31 +18,123 @@
 			color: #fff;
 			text-align: center;
 		}
-		span{
+		#text1{
+			width: 80%;
+			margin: 10px auto;
+		}
+		#text1 span{
 			color:rgba(255,255,255,0);
 			font-size: 14px;
 			text-shadow: 200px 0px 200px rgba(255,255,255,0);
 			transition: 0.5s ease all;
 		}
+	#box{
+		width:600px;
+		height: 400px;
+		margin:50px auto;
+		position: relative;
+	}
+	#box span{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100px;
+		height:100px;
+		transform-style: preserve-3d;
+		transform:perspective(800px) rotateY(0deg);
+	}
+	#box span i.front{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		background: url(img/ming0.jpg) no-repeat;
+		transform:translateZ(1px);
+	}
+	#box span i.back{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		background: url(img/ming1.jpg) no-repeat;
+		transform:translateZ(-1px) scale(-1,1);
+	}
 	</style>
 	<script>
 		window.onload=function(){
 			var oTxt1=document.querySelector("#text1");
-			var str="给你的明信片哟，酷不酷？！想给你写明信片来着，但是字太丑，所以才不愿意写，等以后有时间我把字给练一练，练好了有机会就给你写明信片，^_^。。。这次到湖南玩得很开心、很开心、很开心！！！之前也一直打算来趟湖南，但是总感觉来了一次之后，可能以后我们基本上不会再有什么见面的机会了，会有点儿小小的害怕吧，这也是一直没有来得原因。真的是小时候不在爸妈身边生活的原因，早就已经形成了喜怒哀乐不形于色的习惯，即使玩得再开心也表现不出来，离开的时候即使再难过也是表现得很平淡。<br/>    其实那天你问我寄明信片要寄给谁，我最先说的是院长，主要是觉得你就在我旁边就没有想到要寄给你，后来你说可以写想跟你说的话，想说的话其实很多，但是不知道要说什么，好奇怪。想问的也很多，想问你工作怎么样呀，生活怎么样呀。。。很多时候不想去问，感觉问与不问没有什么差别，我也不能做什么。<br/>    只希望你以后过得更好，越来越开心，越来越幸福！顺便跟你说一下，回深圳的当天本来是烈日当空的，后来还是下了大雨！哈哈。。。";
+			var str="给你的明信片哟，酷不酷？！<br/>想给你写明信片来着，但是字太丑，所以才不愿意写。让我这么没有艺术细胞的人来做设计真的是很为难我呀，你就将就着看看，^_^。。。这次到湖南玩得很开心、很开心、很开心！！！之前也一直打算来趟湖南，但是总感觉来了一次之后，可能以后我们基本上不会再有什么见面的机会了，会有点儿小小的害怕吧，这也是一直没有来得原因。真的是小时候不在爸妈身边生活的原因，寄人篱下地生活着，早就已经形成了喜怒哀乐不形于色的习惯，即使玩得再开心也不善于表现出来，离开的时候即使再难过也是表现得很平淡。<br/>其实那天你问我寄明信片要寄给谁，我最先说的是院长，主要是觉得你就在我旁边就没有想到要寄给你，但是你还是排在第一位的哟。后来你说可以写想跟你说的话，想说的话其实很多，但是不知道要说什么，好奇怪。想问的也很多，想问你工作怎么样呀，生活怎么样呀。。。很多时候觉得不好去问，有一种说不出的感觉。<br/>不管怎么说，只希望你以后过得更好，越来越开心，越来越幸福！顺便跟你说一下，回深圳的当天本来是烈日当空的，后来还是下了大雨，然后我又被取笑了！哈哈。。。";
 
 			for(var i=0; i<str.length; i++){
-				var oSpan=document.createElement('span');
-				oSpan.innerHTML=str.charAt(i);
+				var oSpan1=document.createElement('span');
+				oSpan1.innerHTML=str.charAt(i);
 
-				oTxt1.appendChild(oSpan);
+				oTxt1.appendChild(oSpan1);
 			}
 
-			var aSpan=oTxt1.children;
+			var aSpan1=oTxt1.children;
+			var iNow1=0;
+			var timer=null;
+			timer=setInterval(function(){
+				aSpan1[iNow1].style.textShadow="0px 0px 0px rgba(255,255,255,1)";
+				iNow1++;			
+				if(str.length==iNow){
+					clearInterval(timer);
+				}	
+			},100);
+
+			var oBox=document.getElementById('box');
+			var R=6;
+			var C=4;
+			var W=oBox.offsetWidth;
+			var H=oBox.offsetHeight;
 			var iNow=0;
+
+			for (var c = 0; c <C; c++) {
+				for (var r = 0; r < R; r++) {
+					var oSpan=document.createElement('span');
+					oSpan.innerHTML="<i class='front'></i><i class='back'></i>";
+					//位置
+					oSpan.style.left=W/R*r+'px';
+					oSpan.style.top=H/C*c+'px';
+
+					var aI=oSpan.children;
+					aI[0].style.backgroundPosition=(-oBox.offsetWidth/R*r)+"px "+(-oBox.offsetHeight/C*c)+"px";
+					aI[1].style.backgroundPosition=(-oBox.offsetWidth/R*r)+"px "+(-oBox.offsetHeight/C*c)+"px";
+					oSpan.C=c;
+					oSpan.R=r;
+
+					oBox.appendChild(oSpan);
+
+				}
+			}
+
+			var aSpan=oBox.children;
 			setInterval(function(){
-				aSpan[iNow].style.textShadow="0px 0px 0px rgba(255,255,255,1)";
 				iNow++;
-			},300);
+				for (var i = 0; i < aSpan.length; i++) {
+					aSpan[i].style.transition="1s all ease "+(aSpan[i].R+aSpan[i].C)*100+"ms";
+					aSpan[i].style.transform="perspective(800px) rotateY(180deg)";
+				}
+				
+				aSpan[aSpan.length-1].addEventListener('transitionend',function(){
+					console.log(iNow,iNow1);
+					for (var i = 0; i < aSpan.length; i++) {
+						aSpan[i].style.transition='none';
+						aSpan[i].style.transform="perspective(800px) rotateY(0deg)";
+
+						aSpan[i].children[0].style.backgroundImage='url(img/ming'+iNow%5+'.jpg)';
+						aSpan[i].children[1].style.backgroundImage='url(img/ming'+(iNow+1)%5+'.jpg)';
+					}
+				},false);
+			},1000);
+			/*oBox.onclick=function(){
+				
+			};
+
+			*/
 		};
 	</script>
 </head>
@@ -48,6 +144,9 @@
 	</header>
 	<article>
 		<div id="text1">
+			
+		</div>
+		<div id="box">
 			
 		</div>
 	</article>
