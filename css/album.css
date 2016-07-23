@@ -1,0 +1,149 @@
+@charset "utf-8";
+/**基本格式开始***************/
+a{ text-decoration:none; }
+.bodyCon07{width:1000px; overflow:hidden;margin:0 auto;}
+.bodyCon07 .teacher{width:1000px;height:325px;position:relative;margin:0 auto; overflow:hidden;}
+.bodyCon07 .teacher .teacherPic{width:1000px;height:325px;position:absolute; background:url(../images/sirendingzhi1.jpg) no-repeat;}
+.bodyCon07 .teacher .teacherPic .content{width:200px;height:325px;float:left;position:relative;overflow:hidden;}
+.bodyCon07 .teacher .teacherPic .content .txt{width:176px;height:100px;background:rgba(18,21,44,0.5); position:absolute;left:0px;bottom:0px;padding:0 12px;border-top:2px solid #FFE000;font-family: 微软雅黑;font-size: 12px;}
+.bodyCon07 .teacher .teacherPic .content .txt h3{color:#FFC200;font-size:24px;font-weight:100;margin:10px 0 6px 0;}
+.bodyCon07 .teacher .teacherPic h4{color:#fff;font-size:12px;font-weight:100;height: 40px;}
+.bodyCon07 .teacher .teacherPic .content .txt p{color:#fff;margin-top:15px;padding-top:5px;border-top:1px solid #FFC200;font-family: 微软雅黑;}
+
+#paging{
+	width: 700px;
+	height: 400px;
+	background: url(../images/0.jpg) no-repeat 0 0;
+	margin: 50px auto;
+	position: relative;
+}
+#next{
+	width: 350px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: url(../images/1.jpg) no-repeat;
+	background-position: -350px 0;
+}
+#prev{
+	width: 350px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform-style: preserve-3d;
+	transform-origin: left center;
+	transition: 1s all ease;
+}
+#prev div{
+	position: absolute;
+	top: 0;
+	left:0;
+}
+#front{
+	width:100%;
+	height: 100%;
+	background: url(../images/0.jpg) no-repeat;
+	background-position: -350px 0;
+	transform: translateZ(1px);
+}
+#back{
+	width:100%;
+	height: 100%;
+	background: url(../images/1.jpg) no-repeat;
+	transform: translateZ(-1px) scale(-1,1);
+}
+#bomb{
+	width: 700px;
+	height: 400px;
+	margin: 100px auto;
+	position: relative;
+}
+#bomb span{
+	position: absolute;
+	top:0;
+	left:0;
+	transform-style: preserve-3d;
+	transform:perspective(800px) rotateY(0deg);
+}
+#bomb span i.front{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background: url(../images/0.jpg) no-repeat;
+	transform:translateZ(1px);
+}
+#bomb span i.back{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background: url(../images/1.jpg) no-repeat;
+	transform:translateZ(-1px) scale(-1,1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
